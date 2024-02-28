@@ -1,3 +1,6 @@
+[submodule "microservices-private"]
+	path = microservices-private
+	url = https://github.com/ArthurCorbellini/microservices-private.git
 [submodule "accounts"]
 	path = accounts
 	url = https://github.com/ArthurCorbellini/ms-accounts.git
