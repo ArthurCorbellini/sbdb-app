@@ -1,0 +1,6 @@
+[submodule "accounts"]
+	path = accounts
+	url = https://github.com/ArthurCorbellini/ms-accounts.git
+[submodule "loans"]
+	path = loans
+	url = https://github.com/ArthurCorbellini/ms-loans.git
