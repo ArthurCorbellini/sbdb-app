@@ -7,3 +7,6 @@
 [submodule "loans"]
 	path = loans
 	url = https://github.com/ArthurCorbellini/ms-loans.git
+[submodule "cards"]
+	path = cards
+	url = https://github.com/ArthurCorbellini/ms-cards.git
