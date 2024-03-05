@@ -21,6 +21,17 @@ services:
           memory: 700m
     networks:
       - ms-network
+  cards:
+    image: "artcorb/cards:0.0.1-SNAPSHOT"
+    container_name: ms-cards
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - ms-network
 networks:
   ms-network:
     driver: "bridge" # create the network with the name "ms-network"
