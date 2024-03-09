@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "java.saveActions.organizeImports": true,
+  "java.format.settings.url": ".vscode/eclipse-java-google-style.xml",
+  "java.format.settings.profile": "GoogleStyle",
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "disabled",
+}

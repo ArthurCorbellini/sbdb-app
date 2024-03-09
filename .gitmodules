@@ -1,12 +1,12 @@
-[submodule "microservices-private"]
+[submodule "sbdb-private"]
 	path = microservices-private
-	url = https://github.com/ArthurCorbellini/microservices-private.git
-[submodule "accounts"]
+	url = https://github.com/ArthurCorbellini/sbdb-private.git
+[submodule "sbdb-ms-accounts"]
 	path = accounts
-	url = https://github.com/ArthurCorbellini/ms-accounts.git
-[submodule "loans"]
+	url = https://github.com/ArthurCorbellini/sbdb-ms-accounts.git
+[submodule "sbdb-ms-loans"]
 	path = loans
-	url = https://github.com/ArthurCorbellini/ms-loans.git
-[submodule "cards"]
+	url = https://github.com/ArthurCorbellini/sbdb-ms-loans.git
+[submodule "sbdb-ms-cards"]
 	path = cards
-	url = https://github.com/ArthurCorbellini/ms-cards.git
+	url = https://github.com/ArthurCorbellini/sbdb-ms-cards.git
