@@ -1,1 +1,1 @@
-# Project to control the infrastructure of all microservices
+# Spring Boot Demo Bank - App (sbdb-app)
