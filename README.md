@@ -1,1 +1,2 @@
-# Spring Boot Demo Bank - App (sbdb-app)
+# Spring Boot Demo Bank - App
+- sbdb-app
