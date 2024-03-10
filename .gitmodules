@@ -10,3 +10,6 @@
 [submodule "sbdb-ms-cards"]
 	path = sbdb-ms-cards
 	url = https://github.com/ArthurCorbellini/sbdb-ms-cards.git
+[submodule "sbdb-configserver"]
+	path = sbdb-configserver
+	url = https://github.com/ArthurCorbellini/sbdb-configserver.git
