@@ -1,0 +1,36 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "ConfigserverApplication",
+      "request": "launch",
+      "mainClass": "com.artcorb.configserver.ConfigserverApplication",
+      "projectName": "configserver"
+    },
+    {
+      "type": "java",
+      "name": "AccountsApplication",
+      "request": "launch",
+      "mainClass": "com.corbellini.accounts.AccountsApplication",
+      "projectName": "accounts"
+    },
+    {
+      "type": "java",
+      "name": "CardsApplication",
+      "request": "launch",
+      "mainClass": "com.artcorb.cards.CardsApplication",
+      "projectName": "cards"
+    },
+    {
+      "type": "java",
+      "name": "LoansApplication",
+      "request": "launch",
+      "mainClass": "com.corbellini.loans.LoansApplication",
+      "projectName": "loans"
+    }
+  ]
+}
