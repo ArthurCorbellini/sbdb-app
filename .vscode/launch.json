@@ -15,7 +15,7 @@
       "type": "java",
       "name": "AccountsApplication",
       "request": "launch",
-      "mainClass": "com.corbellini.accounts.AccountsApplication",
+      "mainClass": "com.artcorb.accounts.AccountsApplication",
       "projectName": "accounts"
     },
     {
@@ -29,7 +29,7 @@
       "type": "java",
       "name": "LoansApplication",
       "request": "launch",
-      "mainClass": "com.corbellini.loans.LoansApplication",
+      "mainClass": "com.artcorb.loans.LoansApplication",
       "projectName": "loans"
     }
   ]
