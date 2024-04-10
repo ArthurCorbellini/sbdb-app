@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "EurekaserverApplication",
+      "request": "launch",
+      "mainClass": "com.artcorb.eurekaserver.EurekaserverApplication",
+      "projectName": "sbdb-eurekaserver"
+    },
+    {
+      "type": "java",
       "name": "ConfigserverApplication",
       "request": "launch",
       "mainClass": "com.artcorb.configserver.ConfigserverApplication",
