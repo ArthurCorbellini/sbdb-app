@@ -13,3 +13,6 @@
 [submodule "sbdb-configserver"]
 	path = sbdb-configserver
 	url = https://github.com/ArthurCorbellini/sbdb-configserver.git
+[submodule "sbdb-eurekaserver"]
+	path = sbdb-eurekaserver
+	url = https://github.com/ArthurCorbellini/sbdb-eurekaserver.git
