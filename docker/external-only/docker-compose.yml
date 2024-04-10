@@ -29,6 +29,23 @@ services:
       file: common-config.yml
       service: microservice-db-config
 
+  rabbit:
+    image: rabbitmq:3.13-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    # check se rabbitmq está operante (conforme documentação)
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
 networks:
   sbdb-network:
     driver: "bridge" # create the network with the name "sbdb-network"

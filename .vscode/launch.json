@@ -16,28 +16,28 @@
       "name": "ConfigserverApplication",
       "request": "launch",
       "mainClass": "com.artcorb.configserver.ConfigserverApplication",
-      "projectName": "configserver"
+      "projectName": "sbdb-configserver"
     },
     {
       "type": "java",
       "name": "AccountsApplication",
       "request": "launch",
       "mainClass": "com.artcorb.accounts.AccountsApplication",
-      "projectName": "accounts"
+      "projectName": "sbdb-ms-accounts"
     },
     {
       "type": "java",
       "name": "CardsApplication",
       "request": "launch",
       "mainClass": "com.artcorb.cards.CardsApplication",
-      "projectName": "cards"
+      "projectName": "sbdb-ms-cards"
     },
     {
       "type": "java",
       "name": "LoansApplication",
       "request": "launch",
       "mainClass": "com.artcorb.loans.LoansApplication",
-      "projectName": "loans"
+      "projectName": "sbdb-ms-loans"
     }
   ]
 }
