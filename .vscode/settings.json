@@ -10,4 +10,5 @@
   "java.format.settings.profile": "GoogleStyle",
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.compile.nullAnalysis.mode": "disabled",
+  "spring-boot.ls.problem.application-yaml.YAML_UNKNOWN_PROPERTY": "IGNORE",
 }
