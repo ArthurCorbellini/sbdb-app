@@ -1,0 +1,17 @@
+services:
+  network-deploy-service:
+    networks:
+      - sbdb-network # put the microservices in the same network, for enable the communication with each other 
+
+  microservice-db-config:
+    extends:
+      service: network-deploy-service
+    image: mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD: root
