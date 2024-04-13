@@ -110,7 +110,7 @@ services:
     image: "artcorb/sbdb-ms-loans:0.0.1-SNAPSHOT"
     container_name: sbdb-ms-loans
     ports:
-      - "8082:8082"
+      - "8090:8090"
     depends_on:
       sbdb-db-loans:
         condition: service_healthy
@@ -125,7 +125,7 @@ services:
     image: "artcorb/sbdb-ms-cards:0.0.1-SNAPSHOT"
     container_name: sbdb-ms-cards
     ports:
-      - "8081:8081"
+      - "9000:9000"
     depends_on:
       sbdb-db-cards:
         condition: service_healthy
