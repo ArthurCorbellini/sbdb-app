@@ -3,7 +3,7 @@ services:
     networks:
       - sbdb-network # put the microservices in the same network, for enable the communication with each other 
 
-  microservice-db-config:
+  common-db-config:
     extends:
       service: network-deploy-service
     image: mysql
@@ -16,7 +16,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
 
-  microservice-base-config:
+  common-base-config:
     extends:
       service: network-deploy-service
     deploy:
@@ -26,14 +26,17 @@ services:
     environment:
       SPRING_RABBITMQ_HOST: "rabbit"
 
-  microservice-configserver-config:
+  common-ms-config:
     extends:
-      service: microservice-base-config
+      service: common-base-config
     depends_on:
       configserver:
+        condition: service_healthy
+      eurekaserver:
         condition: service_healthy
     environment:
       SPRING_PROFILES_ACTIVE: prd
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8888/
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/

@@ -1,3 +1,7 @@
+networks:
+  sbdb-network:
+    driver: "bridge" # create the network with the name "sbdb-network"
+
 services:
   sbdb-db-accounts:
     container_name: sbdb-db-accounts
@@ -7,7 +11,7 @@ services:
       MYSQL_DATABASE: sbdb-db-accounts
     extends:
       file: common-config.yml
-      service: microservice-db-config
+      service: common-db-config
 
   sbdb-db-loans:
     container_name: sbdb-db-loans
@@ -17,7 +21,7 @@ services:
       MYSQL_DATABASE: sbdb-db-loans
     extends:
       file: common-config.yml
-      service: microservice-db-config
+      service: common-db-config
 
   sbdb-db-cards:
     container_name: sbdb-db-cards
@@ -27,7 +31,7 @@ services:
       MYSQL_DATABASE: sbdb-db-cards
     extends:
       file: common-config.yml
-      service: microservice-db-config
+      service: common-db-config
 
   rabbit:
     image: rabbitmq:3.13-management
@@ -64,7 +68,29 @@ services:
       start_period: 10s
     extends:
       file: common-config.yml
-      service: microservice-base-config
+      service: common-base-config
+
+  eurekaserver:
+    image: "artcorb/sbdb-eurekaserver:0.0.1-SNAPSHOT"
+    container_name: sbdb-eurekaserver
+    ports:
+      - "8070:8070"
+    depends_on:
+      rabbit:
+        condition: service_healthy
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: common-base-config
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
 
   accounts:
     image: "artcorb/sbdb-ms-accounts:0.0.1-SNAPSHOT"
@@ -80,7 +106,7 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-accounts:3306/sbdb-db-accounts" # communication between containers
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: common-ms-config
 
   loans:
     image: "artcorb/sbdb-ms-loans:0.0.1-SNAPSHOT"
@@ -92,10 +118,10 @@ services:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "loans"
-      SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-loans:3307/sbdb-db-loans" # communication between containers
+      SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-loans:3306/sbdb-db-loans" # communication between containers
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: common-ms-config
 
   cards:
     image: "artcorb/sbdb-ms-cards:0.0.1-SNAPSHOT"
@@ -107,11 +133,7 @@ services:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "cards"
-      SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-cards:3308/sbdb-db-cards" # communication between containers
+      SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-cards:3306/sbdb-db-cards" # communication between containers
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
-
-networks:
-  sbdb-network:
-    driver: "bridge" # create the network with the name "sbdb-network"
+      service: common-ms-config

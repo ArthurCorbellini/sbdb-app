@@ -1,3 +1,7 @@
+networks:
+  sbdb-network:
+    driver: "bridge" # create the network with the name "sbdb-network"
+
 services:
   sbdb-db-accounts:
     container_name: sbdb-db-accounts
@@ -45,7 +49,3 @@ services:
     extends:
       file: common-config.yml
       service: network-deploy-service
-
-networks:
-  sbdb-network:
-    driver: "bridge" # create the network with the name "sbdb-network"
