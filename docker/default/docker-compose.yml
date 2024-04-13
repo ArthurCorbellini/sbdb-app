@@ -78,8 +78,6 @@ services:
     depends_on:
       rabbit:
         condition: service_healthy
-      configserver:
-        condition: service_healthy
     healthcheck:
       test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
       interval: 10s
@@ -88,7 +86,7 @@ services:
       start_period: 10s
     extends:
       file: common-config.yml
-      service: common-base-config
+      service: common-configserver-config
     environment:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
@@ -106,7 +104,7 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-accounts:3306/sbdb-db-accounts" # communication between containers
     extends:
       file: common-config.yml
-      service: common-ms-config
+      service: common-eurekaserver-config
 
   loans:
     image: "artcorb/sbdb-ms-loans:0.0.1-SNAPSHOT"
@@ -121,7 +119,7 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-loans:3306/sbdb-db-loans" # communication between containers
     extends:
       file: common-config.yml
-      service: common-ms-config
+      service: common-eurekaserver-config
 
   cards:
     image: "artcorb/sbdb-ms-cards:0.0.1-SNAPSHOT"
@@ -136,4 +134,4 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-cards:3306/sbdb-db-cards" # communication between containers
     extends:
       file: common-config.yml
-      service: common-ms-config
+      service: common-eurekaserver-config
