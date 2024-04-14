@@ -16,3 +16,6 @@
 [submodule "sbdb-eurekaserver"]
 	path = sbdb-eurekaserver
 	url = https://github.com/ArthurCorbellini/sbdb-eurekaserver.git
+[submodule "sbdb-gatewayserver"]
+	path = sbdb-gatewayserver
+	url = https://github.com/ArthurCorbellini/sbdb-gatewayserver.git
