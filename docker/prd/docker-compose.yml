@@ -54,14 +54,14 @@ services:
     image: "artcorb/sbdb-configserver:0.0.1-SNAPSHOT"
     container_name: sbdb-configserver
     ports:
-      - "8888:8888"
+      - "8071:8071"
     # verifica se o rabbitmq está operante antes de subir
     depends_on:
       rabbit:
         condition: service_healthy
     # check se configserver está operante
     healthcheck:
-      test: "curl --fail --silent localhost:8888/actuator/health/readiness | grep UP || exit 1"
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
       interval: 10s
       timeout: 5s
       retries: 10
