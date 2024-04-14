@@ -6,17 +6,17 @@
   "configurations": [
     {
       "type": "java",
-      "name": "EurekaserverApplication",
-      "request": "launch",
-      "mainClass": "com.artcorb.eurekaserver.EurekaserverApplication",
-      "projectName": "sbdb-eurekaserver"
-    },
-    {
-      "type": "java",
       "name": "ConfigserverApplication",
       "request": "launch",
       "mainClass": "com.artcorb.configserver.ConfigserverApplication",
       "projectName": "sbdb-configserver"
+    },
+    {
+      "type": "java",
+      "name": "EurekaserverApplication",
+      "request": "launch",
+      "mainClass": "com.artcorb.eurekaserver.EurekaserverApplication",
+      "projectName": "sbdb-eurekaserver"
     },
     {
       "type": "java",
@@ -38,6 +38,13 @@
       "request": "launch",
       "mainClass": "com.artcorb.loans.LoansApplication",
       "projectName": "sbdb-ms-loans"
-    }
+    },
+    {
+      "type": "java",
+      "name": "GatewayserverApplication",
+      "request": "launch",
+      "mainClass": "com.artcorb.gatewayserver.GatewayserverApplication",
+      "projectName": "sbdb-gatewayserver"
+    },
   ]
 }
