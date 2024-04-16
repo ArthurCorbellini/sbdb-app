@@ -14,3 +14,6 @@ call mvn compile jib:dockerBuild
 
 cd ..\sbdb-ms-loans\
 call mvn compile jib:dockerBuild
+
+cd ..\sbdb-gatewayserver\
+call mvn compile jib:dockerBuild

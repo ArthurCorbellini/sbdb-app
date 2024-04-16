@@ -99,6 +99,13 @@ services:
     depends_on:
       sbdb-db-accounts:
         condition: service_healthy
+    # check se o microsserviço está operante
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     environment:
       SPRING_APPLICATION_NAME: "accounts"
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-accounts:3306/sbdb-db-accounts" # communication between containers
@@ -114,6 +121,13 @@ services:
     depends_on:
       sbdb-db-loans:
         condition: service_healthy
+    # check se o microsserviço está operante
+    healthcheck:
+      test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     environment:
       SPRING_APPLICATION_NAME: "loans"
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-loans:3306/sbdb-db-loans" # communication between containers
@@ -129,9 +143,35 @@ services:
     depends_on:
       sbdb-db-cards:
         condition: service_healthy
+    # check se o microsserviço está operante
+    healthcheck:
+      test: "curl --fail --silent localhost:9000/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     environment:
       SPRING_APPLICATION_NAME: "cards"
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-cards:3306/sbdb-db-cards" # communication between containers
+    extends:
+      file: common-config.yml
+      service: common-eurekaserver-config
+
+  gatewayserver:
+    image: "artcorb/sbdb-gatewayserver:0.0.1-SNAPSHOT"
+    container_name: sbdb-gatewayserver
+    ports:
+      - "8072:8072"
+    # só vai subir se os healthchecks passarem
+    depends_on:
+      accounts:
+        condition: service_healthy
+      loans:
+        condition: service_healthy
+      cards:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "gatewayserver"
     extends:
       file: common-config.yml
       service: common-eurekaserver-config
