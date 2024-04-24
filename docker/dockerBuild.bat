@@ -1,6 +1,6 @@
 @REM @echo off
 
-cd .\sbdb-configserver\
+cd ..\sbdb-configserver\
 call mvn compile jib:dockerBuild -Dmaven.test.skip=true
 
 cd ..\sbdb-eurekaserver\
