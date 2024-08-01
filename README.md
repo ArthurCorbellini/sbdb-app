@@ -27,6 +27,12 @@ cd .\docker\default\
 docker compose up -d
 ```
 
+If you want to up in debug mode, you will need to start the databases and the rabbitmq containers:
+```
+cd .\docker\external-only\
+
+docker compose up -d
+```
 
 ## TODO:
 
