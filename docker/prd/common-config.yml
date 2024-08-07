@@ -25,6 +25,9 @@ services:
           memory: 700m # define the memory allocation 
     environment:
       SPRING_RABBITMQ_HOST: "rabbit"
+      JAVA_TOOL_OPTIONS: "-javaagent:/app/libs/opentelemetry-javaagent-1.33.5.jar"
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4317
+      OTEL_METRICS_EXPORTER: none # we are already using the Prometheus for export metrics
 
   common-configserver-config:
     extends:

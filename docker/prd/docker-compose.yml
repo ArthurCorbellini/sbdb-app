@@ -142,6 +142,19 @@ services:
       file: common-config.yml
       service: network-deploy-service
 
+  tempo:
+    image: grafana/tempo:2.4.2
+    container_name: tempo
+    command: -config.file /etc/tempo-config.yml
+    ports:
+      - "3110:3100"
+      - "4317:4317"
+    volumes:
+      - ../observability/tempo/tempo.yml:/etc/tempo-config.yml
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
   grafana:
     image: grafana/grafana:latest
     environment:
@@ -307,6 +320,8 @@ services:
     extends:
       file: common-config.yml
       service: common-base-config
+    environment:
+      OTEL_SERVICE_NAME: "configserver"
 
   eurekaserver:
     image: "artcorb/sbdb-eurekaserver:0.0.1-SNAPSHOT"
@@ -327,6 +342,7 @@ services:
       service: common-configserver-config
     environment:
       SPRING_APPLICATION_NAME: "eurekaserver"
+      OTEL_SERVICE_NAME: "eurekaserver"
 
   accounts:
     image: "artcorb/sbdb-ms-accounts:0.0.1-SNAPSHOT"
@@ -347,6 +363,7 @@ services:
     environment:
       SPRING_APPLICATION_NAME: "accounts"
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-accounts:3306/sbdb-db-accounts" # communication between containers
+      OTEL_SERVICE_NAME: "accounts"
     extends:
       file: common-config.yml
       service: common-eurekaserver-config
@@ -369,6 +386,7 @@ services:
     environment:
       SPRING_APPLICATION_NAME: "loans"
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-loans:3306/sbdb-db-loans" # communication between containers
+      OTEL_SERVICE_NAME: "loans"
     extends:
       file: common-config.yml
       service: common-eurekaserver-config
@@ -391,6 +409,7 @@ services:
     environment:
       SPRING_APPLICATION_NAME: "cards"
       SPRING_DATASOURCE_URL: "jdbc:mysql://sbdb-db-cards:3306/sbdb-db-cards" # communication between containers
+      OTEL_SERVICE_NAME: "cards"
     extends:
       file: common-config.yml
       service: common-eurekaserver-config
@@ -415,6 +434,7 @@ services:
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
       SPRING_DATA_REDIS_TIMEOUT: 1s
+      OTEL_SERVICE_NAME: "gatewayserver"
     extends:
       file: common-config.yml
       service: common-eurekaserver-config
