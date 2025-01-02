@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    // required
+    "vscjava.vscode-java-pack",
+    "vmware.vscode-boot-dev-pack",
+    "vscjava.vscode-lombok",
+    // not required
+    "pkief.material-icon-theme"
+  ]
+}
